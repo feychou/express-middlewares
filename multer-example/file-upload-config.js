@@ -8,7 +8,7 @@ const fileFilter = (req, file, cb) => {
   // Accept image file types only
   if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
     req.fileValidationError = 'Only image files are allowed!';
-    return cb(new Error('Only image files are allowed!'), false);
+    return cb('Only image files are allowed!', false);
   }
   cb(null, true);
 };

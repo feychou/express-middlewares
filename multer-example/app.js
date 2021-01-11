@@ -17,11 +17,16 @@ app.get('/upload-profile-picture', (req, res) => {
   res.sendFile('upload_profile_picture.html', { root: publicFolder })
 });
 
-app.post('/upload-profile-picture', upload.single('profile_pic'), (req, res) => {
-  const { file, fileValidationError } = req
+app.post('/upload-profile-picture', upload.single('profile_pic'), (req, res, err) => {
+  const { file, fileValidationError } = req;
+  if (fileValidationError) {
+    return res.status(500).send(fileValidationError);
+  }
+
   if (!file) {
     return res.status(400).send('Please upload a file');
   }
+
   res.send(`<div>You have uploaded this image: <br/> <img src="http://localhost:3000/uploads/${req.file.filename}" width="500" /></div>`);
 })
 
