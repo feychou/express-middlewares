@@ -6,7 +6,6 @@ const upload = require('./file-upload-config.js');
 const app = express();
 const publicFolder = path.join(__dirname, 'public');
 
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(publicFolder));
 
 app.get('/', (req, res) => {
