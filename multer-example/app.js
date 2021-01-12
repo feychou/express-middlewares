@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
 const upload = require('./file-upload-config.js');
 
 const app = express();
